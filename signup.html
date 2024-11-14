@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Delivery Sign Up</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: url('images/sign.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+            overflow: hidden;
+        }
+        .navbar {
+            width: 100%;
+            background-color: rgba(255, 87, 51, 0.8); /* Semi-transparent navbar */
+            padding: 10px 20px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: space-around;
+            border-bottom: 2px solid #ff5733;
+        }
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        .navbar a:hover {
+            color: #ffcc00; /* Highlight color on hover */
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9); /* White background with transparency */
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 400px;
+            margin-top: 80px; /* Space for navbar */
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 32px;
+            color: #ff5733; /* Main color for headings */
+        }
+        .quote {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #555; /* Darker color for the quote */
+        }
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus {
+            border-color: #ff5733; /* Highlight border on focus */
+            outline: none;
+        }
+        .sign-up-button {
+            background-color: #ff5733; /* Main button color */
+            color: #ffffff;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            width: 100%;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .sign-up-button:hover {
+            background-color: #e74c3c; /* Darker shade on hover */
+            transform: translateY(-2px);
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #777; /* Footer text color */
+        }
+        .footer a {
+            color: #ff5733;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%; /* Circular logo */
+            object-fit: cover; /* Ensures the image covers the circle */
+            margin-bottom: 20px;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            const name = document.forms["signupForm"]["name"].value;
+            const email = document.forms["signupForm"]["email"].value;
+            const password = document.forms["signupForm"]["password"].value;
+            const confirmPassword = document.forms["signupForm"]["confirmPassword"].value;
+
+            if (name === "" || email === "" || password === "" || confirmPassword === "") {
+                alert("All fields must be filled out");
+                return false;
+            }
+            if (password !== confirmPassword) {
+                alert("Passwords do not match");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="about.php">About Us</a>
+        <a href="menu.php">Menu</a>
+        <a href="contact.php">Contact</a>
+    </div>
+
+    <div class="container">
+        <img src="images/logo.png" alt="Logo" class="logo">
+        <h1>Sign Up</h1>
+        <p class="quote">"Join us and start your culinary journey!"</p>
+
+        <form name="signupForm" action="signup.php" method="POST" onsubmit="return validateForm()">
+            <input type="text" name="username" placeholder="Full Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
+            <button type="submit" class="sign-up-button">Sign Up</button>
+        </form>
+        
+        <div class="footer">
+            <p>Already have an account? <a href="signin.html">Sign In</a></p>
+        </div>
+    </div>
+
+</body>
+</html>
